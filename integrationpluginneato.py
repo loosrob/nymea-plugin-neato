@@ -1,18 +1,46 @@
 import nymea
 from pybotvac import Account, Neato, OAuthSession, PasswordlessSession, PasswordSession, Vorwerk, Robot
+import json
 
 # pybotvac library: https://github.com/stianaske/pybotvac
 
 thingsAndRobots = {}
+oauthSessions = {}
+
+# TODO: apikeys provider api
+clientId = "107f465518ff58287c38c8d219b8026a9a4c09ec13f22066286cdfb0224cd285"
+clientSecret = "e6f82946ca3822d5da3228dbbba175b2feb059ddc1bf751d7ee2b4044fa0db6b"
+redirectUri = "https://127.0.0.1:8888"
+
+def startPairing(info):
+    # Authenticate via OAuth2
+    oauthSession = OAuthSession(client_id=clientId, client_secret=clientSecret, redirect_uri=redirectUri, vendor=Neato())
+    oauthSessions[info.transactionId] = oauthSession;
+    authorizationUrl = oauthSession.get_authorization_url()
+    info.oAuthUrl = authorizationUrl
+    info.finish(nymea.ThingErrorNoError)
+
+
+def confirmPairing(info, username, secret):
+    token = oauthSessions[info.transactionId].fetch_token(secret)
+    logger.log("confirmPairing", token)
+    pluginStorage().beginGroup(info.thingId)
+    pluginStorage().setValue("token", json.dumps(token))
+    pluginStorage().endGroup();
+    del oauthSessions[info.transactionId]
+    info.finish(nymea.ThingErrorNoError)
 
 
 def setupThing(info):
     # Setup for the account
     if info.thing.thingClassId == accountThingClassId:
-        username = info.thing.paramValue(accountThingUserParamTypeId)
-        password = info.thing.paramValue(accountThingPasswordParamTypeId)
+        pluginStorage().beginGroup(info.thing.id)
+        token = json.loads(pluginStorage().value("token"))
+        logger.log("setup", token)
+        pluginStorage().endGroup();
+
         try:
-            password_session = PasswordSession(email=username, password=password, vendor=Neato())
+            oAuthSession = OAuthSession(token=token)
             # Login went well, finish the setup
             info.finish(nymea.ThingErrorNoError)
         except:
@@ -25,7 +53,7 @@ def setupThing(info):
         info.thing.setStateValue(accountConnectedStateTypeId, True)
 
         # Create an account session on the session to get info about the login
-        account = Account(password_session)
+        account = Account(oAuthSession)
 
         # List all robots associated with account
         logger.log("account created. Robots:", account.robots);
