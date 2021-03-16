@@ -2,6 +2,7 @@
     "name": "neato",
     "displayName": "Neato",
     "id": "4f6ecb6f-a7fe-4fdb-b8d8-45b1f235110c",
+    "apiKeys": ["neato"],
     "vendors": [
         {
             "name": "neato",
@@ -14,20 +15,7 @@
                     "displayName": "Neato account",
                     "createMethods": ["User"],
                     "interfaces": ["account"],
-                    "paramTypes": [
-                        {
-                            "id": "bca70fa1-7eff-42f9-9cb2-c44dd902ef00",
-                            "name": "user",
-                            "displayName": "Username",
-                            "type": "QString"
-                        },
-                        {
-                            "id": "6b041675-7864-43bf-b4cd-296bdf2d3703",
-                            "name": "password",
-                            "displayName": "Password",
-                            "type": "QString"
-                        }
-                    ],
+                    "setupMethod": "oauth",
                     "stateTypes":[
                         {
                             "id": "e8f47781-e3fd-416f-a9ac-51ef942d0573",
