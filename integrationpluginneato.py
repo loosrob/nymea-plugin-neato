@@ -79,9 +79,9 @@ def setupThing(info):
 
             thingDescriptor = nymea.ThingDescriptor(robotThingClassId, robot.name)
             logger.log("MapID for Serial: ", robot.serial, mapDict[robot.serial])
-            mapIDcomplete = mapDict[robot.serial]
+            mapIDcomplete = mapDict[robot.serial].json
             logger.log("Type mapIDcomplete: ", type(mapIDcomplete))
-            logger.log("Length mapIDcomplete: ", len(mapIDcomplete))
+            # logger.log("Length mapIDcomplete: ", len(mapIDcomplete))
             logger.log("Contents mapIDcomplete: ", mapIDcomplete)
             # mapIDshort = mapIDcomplete[0]
             # logger.log("Type mapIDshort: ", type(mapIDshort))
