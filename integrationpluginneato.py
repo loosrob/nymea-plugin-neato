@@ -88,10 +88,7 @@ def setupThing(info):
             logger.log("MapId type: ", type(mapId), " MapId contents: ", mapId)
             mapName = mapInfo2['name']
             logger.log("MapName type: ", type(mapName), " MapName contents: ", mapName)
-            mapIDshort = "tempID"
-            logger.log("Type mapIDshort: ", type(mapIDshort))
-            logger.log("Contents mapIDshort: ", mapIDshort)
-            mapIDshort = "tempID"
+            mapIDshort = mapId
             thingDescriptor.params = [
                 nymea.Param(robotThingSerialParamTypeId, robot.serial),
                 nymea.Param(robotThingSecretParamTypeId, robot.secret),
