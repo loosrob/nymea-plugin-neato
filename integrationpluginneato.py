@@ -83,6 +83,8 @@ def setupThing(info):
             logger.log("Type mapIDcomplete: ", type(mapIDcomplete))
             # logger.log("Length mapIDcomplete: ", len(mapIDcomplete))
             logger.log("Contents mapIDcomplete: ", mapIDcomplete)
+            logger.log("Contents mapIDcomplete ID: ", mapIDcomplete['id'])
+            logger.log("Contents mapIDcomplete Name: ", mapIDcomplete['name'])
             mapIDshort = "tempID"
             # logger.log("Type mapIDshort: ", type(mapIDshort))
             # logger.log("Contents mapIDshort: ", mapIDshort)
