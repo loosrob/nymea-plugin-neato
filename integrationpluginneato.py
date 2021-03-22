@@ -82,11 +82,11 @@ def setupThing(info):
             mapInfo = mapDict[robot.serial]
             logger.log("Type mapInfo: ", type(mapInfo))
             logger.log("Contents mapInfo: ", mapInfo)
-            mapIDdict = mapInfo[0]
-            logger.log("MapIDdict type: ", type(mapIDlist), " MapIDdict contents: ", mapIDdict)
-            mapId = mapIDdict['id']
+            mapInfo2 = mapInfo[0]
+            logger.log("MapInfo2 type: ", type(mapInfo2), " MapInfo2 contents: ", mapInfo2)
+            mapId = mapInfo2['id']
             logger.log("MapId type: ", type(mapId), " MapId contents: ", mapId)
-            mapName = mapIDdict['name']
+            mapName = mapInfo2['name']
             logger.log("MapName type: ", type(mapName), " MapName contents: ", mapName)
             mapIDshort = "tempID"
             logger.log("Type mapIDshort: ", type(mapIDshort))
