@@ -79,18 +79,15 @@ def setupThing(info):
 
             thingDescriptor = nymea.ThingDescriptor(robotThingClassId, robot.name)
             logger.log("MapID for Serial: ", robot.serial, mapDict[robot.serial])
-            mapIDcomplete = mapDict[robot.serial]
-            logger.log("Type mapIDcomplete: ", type(mapIDcomplete))
-            logger.log("Contents mapIDcomplete: ", mapIDcomplete)
-            mapIDlist = mapIDcomplete[0]
-            logger.log("MapIDlist type: ", type(mapIDlist), " MapIDlist contents: ", mapIDlist)
-            mapIDname = mapIDcomplete[1]
-            logger.log("MapIDname type: ", type(mapIDname), " MapIDname contents: ", mapIDname)
-            # logger.log("Contents mapIDlist: ", mapIDlist)
-            # mapIDId = mapIDlist[0].rsplit(": ", 1)
-            # logger.log("Contents mapIDId: ", mapIDId)
-            # mapIDName = mapIDlist[1].rsplit(": ", 1)
-            # logger.log("Contents mapIDName: ", mapIDName)
+            mapInfo = mapDict[robot.serial]
+            logger.log("Type mapInfo: ", type(mapInfo))
+            logger.log("Contents mapInfo: ", mapInfo)
+            mapIDdict = mapInfo[0]
+            logger.log("MapIDdict type: ", type(mapIDlist), " MapIDdict contents: ", mapIDdict)
+            mapId = mapIDdict['id']
+            logger.log("MapId type: ", type(mapId), " MapId contents: ", mapId)
+            mapName = mapIDdict['name']
+            logger.log("MapName type: ", type(mapName), " MapName contents: ", mapName)
             mapIDshort = "tempID"
             logger.log("Type mapIDshort: ", type(mapIDshort))
             logger.log("Contents mapIDshort: ", mapIDshort)
