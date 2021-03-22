@@ -83,8 +83,8 @@ def setupThing(info):
             logger.log("Type mapIDcomplete: ", type(mapIDcomplete))
             logger.log("Contents mapIDcomplete: ", mapIDcomplete)
             mapIDlist = mapIDcomplete[0]
-            mapIDname = mapIDcomplete[1]
             logger.log("MapIDlist type: ", type(mapIDlist), " MapIDlist contents: ", mapIDlist)
+            mapIDname = mapIDcomplete[1]
             logger.log("MapIDname type: ", type(mapIDname), " MapIDname contents: ", mapIDname)
             # logger.log("Contents mapIDlist: ", mapIDlist)
             # mapIDId = mapIDlist[0].rsplit(": ", 1)
